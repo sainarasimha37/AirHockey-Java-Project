@@ -15,8 +15,11 @@ import startUp.ClientListener;
 import startUp.ServerListener;
 import startUp.TestModeListener;
 
+
 public class AirHockey extends JDialog {
 	private static final long serialVersionUID = 1L;
+	
+	
 
 	private MouseListener mouse = new MouseAdapter() {
 		@Override
@@ -34,14 +37,17 @@ public class AirHockey extends JDialog {
 			// button.setBorder(null);
 		}
 	};
-	
+
 	public AirHockey() {
+		
+		
+		
 		setSize(150, 125);
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		setLayout(new GridLayout(3, 1));
+		setLayout(new GridLayout(2, 1));
 
 		// create menu option to choose if server, client, or testing so want both
 		JButton server = new JButton("SERVER");
@@ -61,18 +67,24 @@ public class AirHockey extends JDialog {
 		add(testMode);
 
 		setVisible(true);
+	
+		
 	}
+	
+	
+    
 
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-			/* LookAndFeel lat = UIManager.getLookAndFeel();
-			 * UIDefaults defaults = lat.getDefaults(); defaults.replace(key, value);
-			 * for(Object key: UIManager.getLookAndFeel().getDefaults().keySet()) {
-			 * System.out.println(key + " = " + UIManager.get(key));
-			 * } */
-		}
-		catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			/*
+			 * LookAndFeel lat = UIManager.getLookAndFeel(); UIDefaults defaults =
+			 * lat.getDefaults(); defaults.replace(key, value); for(Object key:
+			 * UIManager.getLookAndFeel().getDefaults().keySet()) { System.out.println(key +
+			 * " = " + UIManager.get(key)); }
+			 */
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
 		new AirHockey();

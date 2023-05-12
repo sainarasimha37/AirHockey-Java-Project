@@ -17,7 +17,9 @@ public class Chat extends JPanel {
 
 	public Chat() {
 		setLayout(new BorderLayout());
-		setPreferredSize(new Dimension(World.GAMEWIDTH, World.FRAMEHEIGHT));
+//		setPreferredSize(new Dimension(World.GAMEWIDTH, World.FRAMEHEIGHT));
+		setPreferredSize(new Dimension(World.GAMEWIDTH / 2, World.FRAMEHEIGHT / 2));
+
 		
 		area = new JTextArea("Welcome to chat!\n");
 		area.setEditable(false);

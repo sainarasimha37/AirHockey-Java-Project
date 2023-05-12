@@ -57,6 +57,12 @@ public class World extends JFrame implements ReaderListener {
 	private MusicMenu musicMenu;
 	private final Sound sound = Sound.getInstance();
 	private ObjectOutputStream objOut;
+	
+	private LeaderBoard leaderBoard;
+//	private LeaderBoard leaderBoard2;
+	private static final String PLAYER1_NAME = "Player1";
+    private static final String PLAYER2_NAME = "Player2";
+    private static final UserLogin user = new UserLogin();
 
 	public World() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
 		setTitle("Air Hockey");
@@ -81,9 +87,18 @@ public class World extends JFrame implements ReaderListener {
 		setIconImage(new ImageIcon(getClass().getResource("pics/icehockey.png")).getImage());
 		pack();
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
+		leaderBoard = new LeaderBoard();
+		container.add(leaderBoard);
+//		container = getContentPane();
+//	    container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+//	    add(table);
+//	    add(chat);
+//	    add(leaderBoard);
 	}
 
 	protected void setUp(int number) throws IOException, LineUnavailableException, UnsupportedAudioFileException {
+		
 		new ReaderThread(socket, this).start();
 		OutputStream out = socket.getOutputStream();
 		objOut = new ObjectOutputStream(out);
@@ -94,6 +109,7 @@ public class World extends JFrame implements ReaderListener {
 		setVisible(true);
 		startNoise();
 		new GameLoopThread(this).start();
+		
 	}
 
 	private void setUpMenu() throws UnsupportedAudioFileException, IOException {
@@ -124,12 +140,15 @@ public class World extends JFrame implements ReaderListener {
 		menu.add(points2);
 
 		setJMenuBar(menu);
+		
+		
 	}
 
 	public void movePuck() throws LineUnavailableException, IOException, UnsupportedAudioFileException, InterruptedException {
 		int point = table.movePuck();
 		if (point == 1) {
 			points1.setText(String.valueOf(++total1));
+			leaderBoard.addScore(UserLogin.username, total1);
 			//if (total1 >= 10) {
 				// winner = true;
 				// TODO can instead return winner so know if should stop gameloop
@@ -137,6 +156,8 @@ public class World extends JFrame implements ReaderListener {
 		}
 		else if (point == 2) {
 			points2.setText(String.valueOf(++total2));
+			leaderBoard.updateScores();
+//			leaderBoard.addScore(UserLogin.username, total2);
 			//if (total2 >= 10) {
 				// TODO winner = true;
 			//}
