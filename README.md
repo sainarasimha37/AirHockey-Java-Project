@@ -18,15 +18,3 @@ Features include:
 ## Downloading
 
 A runable .jar file is available for download [here](AirHockey.jar).
-
-To download or clone a complete copy of the source code, use Git or checkout
-with SVN using https://github.com/shifraglazer/AirHockey.git web URL.
-
-## Authors
-
-| [<img src="https://avatars.githubusercontent.com/u/10053935?v=3" width="100px;"/>][3] | [<img src="https://avatars.githubusercontent.com/u/10053938?v=3" width="100px;"/>][2]
-| :---: | :---: |
-| [Shifra (Glazer) Black][3] | [Tzipora Ziegler][2] |
-
-[2]:https://github.com/tziporaziegler
-[3]:https://github.com/shifraglazer
